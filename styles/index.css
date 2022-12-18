@@ -1,0 +1,10 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+body {
+    background: url("/img/pexels-pixabay-358532.jpg");
+}

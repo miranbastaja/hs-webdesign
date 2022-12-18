@@ -1,0 +1,32 @@
+:root {
+    --check-color: red;
+    --check-size: 200px;
+    --check-half: calc(var(--check-size) / 2);
+}
+
+body {
+    background-color: #fff;
+    background-size: var(--check-size) var(--check-size);
+    background-position: 0 0, var(--check-half) var(--check-half);
+    overflow-x: hidden;
+    background-image: linear-gradient(45deg,
+            var(--check-color) 25%,
+            transparent 25%,
+            transparent 75%,
+            var(--check-color) 75%,
+            var(--check-color)),
+        linear-gradient(45deg,
+            var(--check-color) 25%,
+            transparent 25%,
+            transparent 75%,
+            var(--check-color) 75%,
+            var(--check-color));
+}
+
+main {
+    width: 62.5%;
+    text-align: center;
+    margin-top: -10rem;
+    padding-top: 10rem;
+    background-color: white;
+}

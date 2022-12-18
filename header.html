@@ -84,6 +84,7 @@
     background: rgba(0, 0, 0, 0.6);
     color: white;
   }
+
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     header {
       -webkit-backdrop-filter: blur(10px);
@@ -114,7 +115,8 @@
   .dropdown {
     position: relative;
   }
-  .dropdown.active > .link:focus,
+
+  .dropdown.active>.link:focus,
   .link:hover {
     color: white;
   }
@@ -135,7 +137,7 @@
     font-size: 1.25rem;
   }
 
-  .dropdown.active > .link + .dropdown-menu {
+  .dropdown.active>.link+.dropdown-menu {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
@@ -153,7 +155,7 @@
     gap: 0.25rem;
   }
 
-  .login-form > input {
+  .login-form>input {
     margin: 0.5rem;
   }
 </style>
