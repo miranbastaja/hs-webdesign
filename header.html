@@ -1,0 +1,178 @@
+<header>
+  <nav class="topnav">
+    <div class="dropdown" data-dropdown>
+      <a href="/index.html" class="link">Home</a>
+    </div>
+    <div class="dropdown" data-dropdown>
+      <button class="link" data-dropdown-button>Zadaci</button>
+      <div class="dropdown-menu dropdown-links">
+        <a href="/zadaci/zadatak13.html" class="link">Hrvatska vs Argentina</a>
+      </div>
+    </div>
+    <div class="dropdown" data-dropdown>
+      <button class="link" data-dropdown-button>About</button>
+      <div class="dropdown-menu information-grid">
+        <div>
+          <div class="dropdown-heading">Project</div>
+          <div class="dropdown-links">
+            <a href="#" class="link">Status</a>
+            <a href="#" class="link">Development</a>
+            <a href="#" class="link">Text Animation</a>
+            <a href="#" class="link">Report a bug</a>
+          </div>
+        </div>
+        <div>
+          <div class="dropdown-heading">Team</div>
+          <div class="dropdown-links">
+            <a href="#" class="link">Members</a>
+            <a href="#" class="link">Roles</a>
+            <a href="#" class="link">Open positions</a>
+          </div>
+        </div>
+        <div>
+          <div class="dropdown-heading">Documentation</div>
+          <div class="dropdown-links">
+            <a href="#" class="link">User manual</a>
+            <a href="#" class="link">Developer manual</a>
+            <a href="#" class="link">API documentation</a>
+          </div>
+        </div>
+        <div>
+          <div class="dropdown-heading">History</div>
+          <div class="dropdown-links">
+            <a href="#" class="link">Fouding</a>
+            <a href="#" class="link">Early development</a>
+            <a href="#" class="link">Timeline</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown" data-dropdown>
+      <button class="link" data-dropdown-button>News</button>
+      <div class="dropdown-menu">
+        <div class="dropdown-links">
+          <a href="#" class="link">Version 1.3rc1 testing</a>
+          <a href="#" class="link">Version 1.2 release</a>
+        </div>
+      </div>
+    </div>
+    <div class="dropdown" data-dropdown>
+      <button class="link" data-dropdown-button>Login</button>
+      <div class="dropdown-menu">
+        <form class="login-form">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: sticky;
+    font-size: 1.5rem;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+  }
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    header {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+  }
+
+  .topnav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10rem;
+  }
+
+  .link {
+    background: none;
+    border: none;
+    color: rgb(174, 174, 174);
+    text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+    mix-blend-mode: difference;
+    white-space: nowrap;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+  .dropdown.active > .link:focus,
+  .link:hover {
+    color: white;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 0.25rem);
+    background-color: rgba(0, 0, 0, 0.8);
+    width: fit-content;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease-in-out, transform 150ms;
+    transform: translateY(-15px);
+    font-size: 1.25rem;
+  }
+
+  .dropdown.active > .link + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .information-grid {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 2rem;
+  }
+
+  .dropdown-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .login-form > input {
+    margin: 0.5rem;
+  }
+</style>
+
+<script>
+  document.addEventListener("click", (e) => {
+    const isDropdownButton = e.target.matches("[data-dropdown-button]");
+    if (!isDropdownButton && e.target.closest("[data-dropdown]") != null)
+      return;
+
+    let currentDropdown;
+    if (isDropdownButton) {
+      currentDropdown = e.target.closest("[data-dropdown]");
+      currentDropdown.classList.toggle("active");
+    }
+
+    document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
+      if (dropdown == currentDropdown) return;
+      dropdown.classList.remove("active");
+    });
+  });
+</script>
