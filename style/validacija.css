@@ -1,0 +1,60 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+body {
+    background: url("/img/pexels-pixabay-358532.jpg");
+}
+
+#inputForm {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    color: white;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    #inputForm {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+}
+
+#inputForm input {
+    border: 2px solid;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: 0.25rem;
+    min-width: 125px;
+    padding: 0.5rem;
+    transition: border-color 0.5s ease-out;
+}
+
+#inputForm input:focus:invalid,
+#inputForm textarea:focus:invalid {
+    background: url("/img/exclamation-triangle-fill.svg") no-repeat 95% 50% lightsalmon;
+    background-size: 25px;
+}
+
+[role="tooltip"],
+.hidetooltip.hidetooltip.hidetooltip + [role="tooltip"] {
+  visibility: hidden;
+  /* position: absolute;
+  top: 2rem;
+  left: 2rem; */
+  background: black;
+  color: red;
+  padding: 0.2rem;
+}
+[aria-describedby]:hover,
+[aria-describedby]:focus {
+  position: relative;
+}
+
+[aria-describedby]:focus:invalid + [role="tooltip"] {
+  visibility: visible;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JS Validacija</title>
+	<script src="https://unpkg.com/htmx.org@1.8.4"
+		integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/style/common.css" />
+	<link rel="stylesheet" href="/style/validacija.css">
+</head>
+
+<body>
+	<div hx-get="/header.html" hx-trigger="revealed" hx-swap="outerHTML"></div>
+	<main>
+		<form id="inputForm">
+			<label for="nameInput">Ime:</label>
+			<input type="text" name="nameInput" id="nameInput" required pattern="^[a-z]+(?:\s[a-z]+)+$"
+				aria-describedby="nametooltip">
+			<span role="tooltip" id="nametooltip">Ime mora sadržavati barem dvije riječi</span>
+
+			<label for="emailInput">Email:</label>
+			<input type="email" name="emailInput" id="emailInput" required aria-describedby="emailtooltip">
+			<span role="tooltip" id="emailtooltip">Email mora biti točnog formata</span>
+
+			<label for="messageInput">Poruka:</label>
+			<textarea name="messageInput" id="messageInput" cols="30" rows="10" required
+				aria-describedby="messagetooltip"></textarea>
+			<span role="tooltip" id="messagetooltip">Poruka mora sadržavati barem jednu riječ</span>
+
+			<button type="submit">Pošalji</button>
+		</form>
+	</main>
+</body>
+
+</html>
